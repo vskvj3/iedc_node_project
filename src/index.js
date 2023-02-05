@@ -37,6 +37,7 @@ let loop50 = ()=>{
     return result
 }
 
+// create 4 players and assign a choice
 let createPlayers = ()=> {
     let player1 = rockPaperScissor('player1');
     let player2 = rockPaperScissor('player2');
@@ -48,8 +49,9 @@ let createPlayers = ()=> {
     return result
 }
 
+// play the game and find the winners
 let play = (players)=> {
-    let  = winner(players[0], players[1])
+    
     let player1VSplayer2 = winner(players[0], players[1])
     let player1VSplayer3 = winner(players[0], players[2])
     let player1VSplayer4 = winner(players[0], players[3])
@@ -69,29 +71,30 @@ let play = (players)=> {
     return result;
 }
 
+// find the winner of a single game
 let winner = (player1, player2)=> {
     p1 = player1.value
     p2 = player2.value
     x = null
     if(p1===p2){
-        x = {name: 'tie'}
+        x = '-'
     }else if(p1 === 'rock'){
         if(p2 === 'paper') {
-            x = player2
+            x = 0
         } else if(p2 === 'scissors'){
-            x = player1
+            x = 1
         }
     }else if(p1 === 'paper'){
         if(p2 === 'rock'){
-            x = player1
+            x = 1
         } else if(p2 === 'scissors'){
-            x = player2
+            x = 0
         }
     }else if(p1 === 'scissors'){
         if(p2 === 'rock'){
-            x = player2
+            x = 0
         }else if(p2 === 'paper'){
-            x = player1
+            x = 1
         }
     }
 
