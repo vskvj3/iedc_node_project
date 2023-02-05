@@ -6,9 +6,9 @@ const app = express();
 
 
 app.get('/game/start', (req, res)=> {
-    let Players = loop50()
+    let result = loop50()
 
-    res.send(Players)
+    res.send(result)
 });
 
 
@@ -31,6 +31,7 @@ let loop50 = ()=>{
             choices[Players[j].name] = Players[j].value
         }
 
+        //console.log(winners)
         result["iteration" + `${i+1}`] = {"choice": choices, "winner": winners}
     }
 
@@ -46,7 +47,9 @@ let createPlayers = ()=> {
 
     let result = [player1, player2, player3, player4]
 
+    //console.log(result)
     return result
+
 }
 
 // play the game and find the winners
@@ -68,6 +71,7 @@ let play = (players)=> {
         "player3 vs player4": player3VSplayer4.name
     }
 
+    //console.log(result)
     return result;
 }
 
@@ -75,29 +79,30 @@ let play = (players)=> {
 let winner = (player1, player2)=> {
     p1 = player1.value
     p2 = player2.value
-    x = null
+    //x = null
     if(p1===p2){
-        x = '-'
+        x = {name: 'tie'}
     }else if(p1 === 'rock'){
         if(p2 === 'paper') {
-            x = 0
+            x = player2
         } else if(p2 === 'scissors'){
-            x = 1
+            x = player1
         }
     }else if(p1 === 'paper'){
         if(p2 === 'rock'){
-            x = 1
+            x = player1
         } else if(p2 === 'scissors'){
-            x = 0
+            x = player2
         }
     }else if(p1 === 'scissors'){
         if(p2 === 'rock'){
-            x = 0
+            x = player2
         }else if(p2 === 'paper'){
-            x = 1
+            x =  player1
         }
     }
 
+    console.log(x)
     return x;
 }
 
