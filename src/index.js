@@ -7,6 +7,7 @@ const app = express();
 
 app.get('/game/start', (req, res)=> {
     let result = loop50()
+    console.log('loong output')
 
     res.send(result)
 });
